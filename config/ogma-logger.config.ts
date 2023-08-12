@@ -9,34 +9,26 @@ import { OgmaModuleOptions } from '@ogma/nestjs-module';
  *  https://ogma.jaymcdoniel.dev/en/introduction/
  */
 export default class OgmaLoggerConfig {
-  static getOgmaLoggerConfig(configService: ConfigService): any {
+  static getOgmaLoggerConfig(configService: ConfigService): OgmaModuleOptions {
     return {
-      servicio: {
-        json: true,
-        timestamp: true,
-        color: true,
-        context: false,
-        levels: ['log', 'warn', 'error', 'debug'],
-        stream: {
-          write: (mensaje) => {
-            appendFile(
-              'logs-ogma',
-              mensaje,
-              (err) => {
-                if (err) {
-                  throw err;
-                }
-                return true;
-              },
-            );
-          },
+      json: true,
+      color: true,
+      stream: {
+        write: (mensaje: string | Uint8Array) => {
+          appendFile(
+            '/home/ronal/git/ogma-testing/config/logs-ogma.log',
+            mensaje,
+            (err) => {
+              if (err) {
+                throw err;
+              }
+             // console.log("el mensaje", mensaje)
+             // return true;
+            },
+          );
         },
-        application: "Testing-OGMA",
       },
-      interceptor: {
-        http: FastifyParser,
-        ws: WsParser
-      },
+
     };
   }
 }

@@ -8,7 +8,7 @@ import { OgmaProviderOptions } from '@ogma/nestjs-module/src/interfaces/ogma-pro
 
 @Module({
   imports: [
-    OgmaModule.forFeature(UsersService)
+    OgmaModule.forFeature(UsersService.name)
 
   ],
   controllers: [UsersController],
