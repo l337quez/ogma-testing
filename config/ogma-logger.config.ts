@@ -31,7 +31,7 @@ export default class OgmaLoggerConfig {
             );
           },
         },
-        application: configService.get('LOGGER_APPLICATION_NAME'),
+        application: "Testing-OGMA",
       },
       interceptor: {
         http: FastifyParser,
